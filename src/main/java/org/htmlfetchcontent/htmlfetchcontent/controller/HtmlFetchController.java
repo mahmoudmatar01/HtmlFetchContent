@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/url-preview")
+@RequestMapping("/api/url-preview")
 public class HtmlFetchController{
 
     private final RestTemplate restTemplate;
@@ -21,6 +21,7 @@ public class HtmlFetchController{
         this.restTemplate = restTemplate;
     }
 
+//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping
     public ResponseEntity<?> getHtmlContent(@RequestBody UrlRequestDto urlRequestDto) {
         String htmlContent = restTemplate.getForObject(urlRequestDto.getUrl(), String.class);
